@@ -38,6 +38,7 @@ func _input(event: InputEvent) -> void:
 		if event is InputEventMouseMotion:
 			var offset := Vector2.LEFT * 35 + Vector2.UP * 32
 			dragging_card.position = event.position - start_drag_pos + offset
+			dragging_card.z_index = 100
 			drop_zone.highlight(drop_rect.has_point(dragging_card.global_position - offset))
 		elif not event.is_pressed():
 			if drop_rect.has_point(dragging_card.global_position):

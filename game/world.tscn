@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4dnkc4toup5t"]
+[gd_scene load_steps=11 format=3 uid="uid://4dnkc4toup5t"]
 
 [ext_resource type="Script" path="res://game/world.gd" id="1_gl2bu"]
 [ext_resource type="Script" path="res://game/world_generation.gd" id="1_vxb1g"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://game/camera_mover.gd" id="3_6hpug"]
 [ext_resource type="Script" path="res://game/npc_manager.gd" id="3_6pd04"]
 [ext_resource type="Texture2D" uid="uid://b7fi2p8wcidta" path="res://sprites/ui/effect_location.png" id="5_78tx4"]
+[ext_resource type="Texture2D" uid="uid://kgrmwunaag82" path="res://sprites/foliage/trees.png" id="6_av7ow"]
+[ext_resource type="Texture2D" uid="uid://vge2rkmtjyxm" path="res://sprites/foliage/ground.png" id="6_n8qlr"]
+[ext_resource type="Script" path="res://game/fog_manager.gd" id="7_7d5d0"]
 
 [sub_resource type="TileSet" id="TileSet_balls"]
 
@@ -16,11 +19,11 @@ script = ExtResource("1_gl2bu")
 script = ExtResource("1_vxb1g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-z_index = -100
-offset_left = -50000.0
-offset_top = -50000.0
-offset_right = 50000.0
-offset_bottom = 50000.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0.669663, 0.67014, 1)
 
 [node name="TerrainLayer" type="TileMapLayer" parent="."]
@@ -51,18 +54,45 @@ is_female = true
 script = ExtResource("3_6hpug")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
-current = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 z_index = -4
-offset_right = 158.0
-offset_bottom = 115.0
+offset_right = 393.0
+offset_bottom = 210.0
 color = Color(0.290196, 0.360784, 0.129412, 1)
 
+[node name="TextureRect" type="TextureRect" parent="ColorRect2"]
+modulate = Color(0.85098, 0.85098, 0.85098, 0.541176)
+texture_repeat = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_n8qlr")
+expand_mode = 1
+stretch_mode = 1
+
 [node name="FoliageManager" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="FoliageManager"]
+position = Vector2(43, 22)
+texture = ExtResource("6_av7ow")
+region_enabled = true
+region_rect = Rect2(89, 12, 15, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="FoliageManager/Sprite2D"]
+position = Vector2(3, 10)
+texture = ExtResource("6_av7ow")
+region_enabled = true
+region_rect = Rect2(93, 92, 13, 12)
 
 [node name="EffectLocation" type="Sprite2D" parent="."]
 visible = false
 z_index = -1
 position = Vector2(53, 45)
 texture = ExtResource("5_78tx4")
+
+[node name="FogOfWar" type="Node2D" parent="."]
+script = ExtResource("7_7d5d0")

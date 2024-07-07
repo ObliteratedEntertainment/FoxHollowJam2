@@ -45,8 +45,8 @@ stretch_mode = 2
 [node name="Label" type="Label" parent="."]
 visible = false
 layout_mode = 2
-anchor_left = 0.0078125
-anchor_top = 0.00625
+anchor_left = -0.539063
+anchor_top = -0.025
 anchor_right = -0.539063
 anchor_bottom = -0.025
 offset_left = 34.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxcjj5xjbl0n6"]
+[gd_scene load_steps=31 format=3 uid="uid://bxcjj5xjbl0n6"]
 
 [ext_resource type="Script" path="res://objects/npc.gd" id="1_yjd37"]
 [ext_resource type="Texture2D" uid="uid://c5sboxjcq1am1" path="res://sprites/characters/cavewoman.png" id="2_ucaha"]
@@ -208,7 +208,13 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="CircleShape2D" id="CircleShape2D_4mkhg"]
 radius = 1.41421
 
-[node name="Npc" type="AnimatableBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pl4fm"]
+radius = 55.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjxl7"]
+radius = 84.0536
+
+[node name="Npc" type="CharacterBody2D"]
 script = ExtResource("1_yjd37")
 
 [node name="CaveWoman" type="Sprite2D" parent="."]
@@ -233,6 +239,8 @@ libraries = {
 [node name="SFXAction" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_sdk03")
 volume_db = 6.595
+max_distance = 600.0
+attenuation = 2.0
 bus = &"SFX"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -240,8 +248,8 @@ tree_root = SubResource("AnimationNodeStateMachine_08eq5")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.750013
-parameters/current_position = 0.52315
-parameters/current_delta = 0.00833333
+parameters/current_position = 0.0770009
+parameters/current_delta = 0.00666667
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -252,11 +260,25 @@ parameters/action/current_length = 0.875013
 parameters/action/current_position = 0.453729
 parameters/action/current_delta = 0.00700056
 parameters/idle/current_length = 0.750013
-parameters/idle/current_position = 0.52315
-parameters/idle/current_delta = 0.00833333
+parameters/idle/current_position = 0.0770009
+parameters/idle/current_delta = 0.00666667
 parameters/run/current_length = 1.00001
 parameters/run/current_position = 0.641715
 parameters/run/current_delta = 0.00904833
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4mkhg")
+
+[node name="FogClear" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FogClear"]
+shape = SubResource("CircleShape2D_pl4fm")
+
+[node name="FogDim" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FogDim"]
+shape = SubResource("CircleShape2D_bjxl7")

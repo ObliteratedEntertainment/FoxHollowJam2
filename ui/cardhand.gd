@@ -35,6 +35,7 @@ func consume_card(card: Card) -> void:
 
 func released_card() -> void:
 	if holding_card != null:
+		holding_card.z_index = 0 
 		holding_card.visible = true
 		holding_card.reset_position()
 		holding_card = null

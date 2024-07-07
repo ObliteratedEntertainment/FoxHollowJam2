@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://8bwcodpwrcdl"]
+
+[ext_resource type="Script" path="res://objects/fog.gd" id="1_k5qq3"]
+[ext_resource type="Texture2D" uid="uid://8emncre8t8xc" path="res://sprites/foliage/fog.png" id="2_ynoqk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_heoyj"]
+radius = 16.0312
+
+[sub_resource type="Animation" id="Animation_0ld4g"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_hcy72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cf33r"]
+_data = {
+"RESET": SubResource("Animation_hcy72"),
+"idle": SubResource("Animation_0ld4g")
+}
+
+[node name="Fog" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_k5qq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_heoyj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.870588)
+texture = ExtResource("2_ynoqk")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_cf33r")
+}
+autoplay = "idle"
+speed_scale = 0.5
