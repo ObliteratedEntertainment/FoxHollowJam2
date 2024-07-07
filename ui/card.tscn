@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2qrv0oaglh1f"]
+
+[ext_resource type="Script" path="res://ui/card.gd" id="1_opgwu"]
+[ext_resource type="Texture2D" uid="uid://8mhwna4nj1ct" path="res://sprites/cards/card_backgrounds.png" id="1_xpwwt"]
+[ext_resource type="FontFile" uid="uid://chqahdlj0gwv3" path="res://Kenney Mini Square Mono.ttf" id="2_e22df"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn6r7"]
+resource_local_to_scene = true
+atlas = ExtResource("1_xpwwt")
+region = Rect2(0, 0, 128, 160)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbtr7"]
+font = ExtResource("2_e22df")
+font_size = 8
+font_color = Color(0.91664, 0.91664, 0.91664, 1)
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 74.0
+offset_bottom = 102.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_opgwu")
+metadata/_edit_use_anchors_ = true
+
+[node name="MouseDetector" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 269.0
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -46.0
+offset_right = 101.0
+offset_bottom = 114.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_yn6r7")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 2
+anchor_left = 0.0078125
+anchor_top = 0.00625
+anchor_right = -0.539063
+anchor_bottom = -0.025
+offset_left = 34.0
+offset_top = 112.0
+offset_right = 162.0
+offset_bottom = 144.0
+text = "Villager
++1"
+label_settings = SubResource("LabelSettings_xbtr7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 68.0
+offset_right = 67.0
+offset_bottom = 94.0
+mouse_filter = 2
+theme_override_constants/line_separation = -3
+theme_override_fonts/normal_font = ExtResource("2_e22df")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "
+[shake rate=20.0 level=5 connected=1][center]Villager
++1[/center][/shake]"
+fit_content = true
+scroll_active = false

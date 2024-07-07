@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2va0gw58tll6"]
+
+[ext_resource type="Script" path="res://game/game.gd" id="1_riog2"]
+[ext_resource type="PackedScene" uid="uid://4dnkc4toup5t" path="res://game/world.tscn" id="2_3i4gc"]
+[ext_resource type="Script" path="res://ui/cardhand.gd" id="2_cifst"]
+[ext_resource type="Script" path="res://ui/card_placement.gd" id="2_elr1w"]
+[ext_resource type="PackedScene" uid="uid://d2qrv0oaglh1f" path="res://ui/card.tscn" id="2_l6xyv"]
+[ext_resource type="PackedScene" uid="uid://6lon3cie3um2" path="res://ui/loading.tscn" id="3_sr5vm"]
+[ext_resource type="Texture2D" uid="uid://dxgf2ty1f7y7q" path="res://sprites/cards/card_play_box.png" id="6_qrtd2"]
+[ext_resource type="Script" path="res://ui/drop_zone.gd" id="7_28b33"]
+[ext_resource type="FontFile" uid="uid://chqahdlj0gwv3" path="res://Kenney Mini Square Mono.ttf" id="8_r4644"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gafwv"]
+line_spacing = 32.0
+font = ExtResource("8_r4644")
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_riog2")
+
+[node name="World" parent="." instance=ExtResource("2_3i4gc")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="CardPlacement" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_elr1w")
+
+[node name="Hand" type="HBoxContainer" parent="HUD/CardPlacement"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -52.0
+offset_right = 217.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 24
+alignment = 1
+script = ExtResource("2_cifst")
+
+[node name="Card" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+card_type = 2
+
+[node name="Card2" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="Card3" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="Card4" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="Card5" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+card_type = 3
+
+[node name="Card6" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="Card7" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="Card8" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="Card9" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="Card10" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="Card11" parent="HUD/CardPlacement/Hand" instance=ExtResource("2_l6xyv")]
+layout_mode = 2
+
+[node name="DropZone" type="NinePatchRect" parent="HUD/CardPlacement"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.5
+offset_top = -62.5
+offset_right = 128.5
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_qrtd2")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+script = ExtResource("7_28b33")
+
+[node name="Label" type="Label" parent="HUD/CardPlacement/DropZone"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Card"
+label_settings = SubResource("LabelSettings_gafwv")
+
+[node name="Game" type="CanvasLayer" parent="."]
+
+[node name="Loading" parent="." instance=ExtResource("3_sr5vm")]
+layer = 10
+visible = false

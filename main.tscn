@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://3x1dj75oktsu"]
+
+[ext_resource type="Texture2D" uid="uid://b36e7nm23cs5m" path="res://sprites/ui/buttons.png" id="1_uvpre"]
+[ext_resource type="Script" path="res://ui/main.gd" id="1_yuakw"]
+[ext_resource type="LabelSettings" uid="uid://o1p1ot6haow4" path="res://ui/button_label_setting.tres" id="2_bpe5l"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yuakw")
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -50.0
+offset_right = 64.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_uvpre")
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/Start"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -20.0
+offset_right = 60.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+label_settings = ExtResource("2_bpe5l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_uvpre")
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+label_settings = ExtResource("2_bpe5l")
