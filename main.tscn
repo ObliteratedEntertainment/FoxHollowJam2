@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3x1dj75oktsu"]
+[gd_scene load_steps=5 format=3 uid="uid://3x1dj75oktsu"]
 
 [ext_resource type="Texture2D" uid="uid://b36e7nm23cs5m" path="res://sprites/ui/buttons.png" id="1_uvpre"]
 [ext_resource type="Script" path="res://ui/main.gd" id="1_yuakw"]
 [ext_resource type="LabelSettings" uid="uid://o1p1ot6haow4" path="res://ui/button_label_setting.tres" id="2_bpe5l"]
+[ext_resource type="PackedScene" uid="uid://2a7v31qpja2r" path="res://audio/sfx_pop.tscn" id="4_1m3wf"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -69,3 +70,5 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Settings"
 label_settings = ExtResource("2_bpe5l")
+
+[node name="SFXButtonPress" parent="." instance=ExtResource("4_1m3wf")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2va0gw58tll6"]
+[gd_scene load_steps=13 format=3 uid="uid://c2va0gw58tll6"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_riog2"]
 [ext_resource type="PackedScene" uid="uid://4dnkc4toup5t" path="res://game/world.tscn" id="2_3i4gc"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dxgf2ty1f7y7q" path="res://sprites/cards/card_play_box.png" id="6_qrtd2"]
 [ext_resource type="Script" path="res://ui/drop_zone.gd" id="7_28b33"]
 [ext_resource type="FontFile" uid="uid://chqahdlj0gwv3" path="res://Kenney Mini Square Mono.ttf" id="8_r4644"]
+[ext_resource type="PackedScene" uid="uid://2a7v31qpja2r" path="res://audio/sfx_pop.tscn" id="10_xa6p3"]
+[ext_resource type="PackedScene" uid="uid://dgiujktjuinv5" path="res://audio/bgm.tscn" id="11_tldyy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gafwv"]
 line_spacing = 32.0
@@ -28,7 +30,7 @@ script = ExtResource("1_riog2")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="CardPlacement" type="Control" parent="HUD"]
+[node name="CardPlacement" type="Control" parent="HUD" node_paths=PackedStringArray("world")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +38,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_elr1w")
+world = NodePath("../../World")
+
+[node name="SFXButtonPress" parent="HUD/CardPlacement" instance=ExtResource("10_xa6p3")]
 
 [node name="Hand" type="HBoxContainer" parent="HUD/CardPlacement"]
 layout_mode = 1
@@ -131,3 +136,5 @@ label_settings = SubResource("LabelSettings_gafwv")
 [node name="Loading" parent="." instance=ExtResource("3_sr5vm")]
 layer = 10
 visible = false
+
+[node name="BGM" parent="." instance=ExtResource("11_tldyy")]

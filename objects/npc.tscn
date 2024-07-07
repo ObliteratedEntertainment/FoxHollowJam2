@@ -1,0 +1,262 @@
+[gd_scene load_steps=29 format=3 uid="uid://bxcjj5xjbl0n6"]
+
+[ext_resource type="Script" path="res://objects/npc.gd" id="1_yjd37"]
+[ext_resource type="Texture2D" uid="uid://c5sboxjcq1am1" path="res://sprites/characters/cavewoman.png" id="2_ucaha"]
+[ext_resource type="Texture2D" uid="uid://mg30y5e8cjb0" path="res://sprites/characters/caveman.png" id="3_tc0vx"]
+[ext_resource type="AudioStream" uid="uid://cj31aes6eerej" path="res://audio/sfx/action-01.wav" id="4_8oih6"]
+[ext_resource type="AudioStream" uid="uid://b0njyh4m1clx8" path="res://audio/sfx/action-02.wav" id="5_38evu"]
+[ext_resource type="AudioStream" uid="uid://7s1vvopv5t8h" path="res://audio/sfx/action-03.wav" id="6_ksjkc"]
+[ext_resource type="AudioStream" uid="uid://dfju60idiwrqc" path="res://audio/sfx/action-04.wav" id="7_feqju"]
+[ext_resource type="AudioStream" uid="uid://hdf7642hijtb" path="res://audio/sfx/action-05.wav" id="8_5ixvk"]
+[ext_resource type="AudioStream" uid="uid://c5b2g14lcdmdj" path="res://audio/sfx/action-06.wav" id="9_jlwo0"]
+[ext_resource type="AudioStream" uid="uid://dfp2nade3b577" path="res://audio/sfx/action-07.wav" id="10_7ef18"]
+
+[sub_resource type="Animation" id="Animation_0tri4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaveWoman:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CaveMan:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nrbmp"]
+resource_name = "action"
+length = 0.875013
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaveWoman:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CaveMan:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.875),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_anim_action_progress"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3pudt"]
+resource_name = "idle"
+length = 0.750013
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaveWoman:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CaveMan:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a2a3g"]
+resource_name = "run"
+length = 1.00001
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaveWoman:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CaveMan:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dnyia"]
+_data = {
+"RESET": SubResource("Animation_0tri4"),
+"action": SubResource("Animation_nrbmp"),
+"idle": SubResource("Animation_3pudt"),
+"run": SubResource("Animation_a2a3g")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sdk03"]
+streams_count = 7
+stream_0/stream = ExtResource("4_8oih6")
+stream_1/stream = ExtResource("5_38evu")
+stream_2/stream = ExtResource("6_ksjkc")
+stream_3/stream = ExtResource("7_feqju")
+stream_4/stream = ExtResource("8_5ixvk")
+stream_5/stream = ExtResource("9_jlwo0")
+stream_6/stream = ExtResource("10_7ef18")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x3x04"]
+animation = &"action"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3csc5"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v23e1"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qsila"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i500m"]
+advance_mode = 2
+advance_expression = "is_action"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mr37q"]
+advance_mode = 2
+advance_expression = "is_running"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3dayq"]
+advance_mode = 2
+advance_expression = "is_running"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3qda3"]
+advance_mode = 2
+advance_expression = "is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_25uu7"]
+advance_mode = 2
+advance_expression = "is_action"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_whcrr"]
+advance_mode = 2
+advance_expression = "is_idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_08eq5"]
+states/action/node = SubResource("AnimationNodeAnimation_x3x04")
+states/action/position = Vector2(555, 221)
+states/idle/node = SubResource("AnimationNodeAnimation_3csc5")
+states/idle/position = Vector2(428, 37)
+states/run/node = SubResource("AnimationNodeAnimation_v23e1")
+states/run/position = Vector2(703, 37)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qsila"), "idle", "action", SubResource("AnimationNodeStateMachineTransition_i500m"), "action", "run", SubResource("AnimationNodeStateMachineTransition_mr37q"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_3dayq"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_3qda3"), "run", "action", SubResource("AnimationNodeStateMachineTransition_25uu7"), "action", "idle", SubResource("AnimationNodeStateMachineTransition_whcrr")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4mkhg"]
+radius = 1.41421
+
+[node name="Npc" type="AnimatableBody2D"]
+script = ExtResource("1_yjd37")
+
+[node name="CaveWoman" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+texture = ExtResource("2_ucaha")
+hframes = 8
+vframes = 3
+
+[node name="CaveMan" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("3_tc0vx")
+hframes = 8
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_dnyia")
+}
+
+[node name="SFXAction" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_sdk03")
+volume_db = 6.595
+bus = &"SFX"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_08eq5")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/current_length = 0.750013
+parameters/current_position = 0.52315
+parameters/current_delta = 0.00833333
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+parameters/action/current_length = 0.875013
+parameters/action/current_position = 0.453729
+parameters/action/current_delta = 0.00700056
+parameters/idle/current_length = 0.750013
+parameters/idle/current_position = 0.52315
+parameters/idle/current_delta = 0.00833333
+parameters/run/current_length = 1.00001
+parameters/run/current_position = 0.641715
+parameters/run/current_delta = 0.00904833
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4mkhg")

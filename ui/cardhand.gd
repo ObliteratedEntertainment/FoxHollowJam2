@@ -23,11 +23,15 @@ func _on_card_selected(card: Card) -> void:
 	#holding_card.visible = false
 	dragging_card.emit(holding_card)
 
-func consume_card(card: Card) -> void:
-	remove_child(card)
+func unlock() -> void:
 	holding_card = null
 	for child in get_children():
 		child.set_selectable(true)
+	
+
+func consume_card(card: Card) -> void:
+	remove_child(card)
+	holding_card = null
 
 func released_card() -> void:
 	if holding_card != null:

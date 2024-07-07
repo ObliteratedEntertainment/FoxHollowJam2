@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://2a7v31qpja2r"]
+
+[ext_resource type="AudioStream" uid="uid://bwslr5va10h1n" path="res://audio/sfx/pop-01.wav" id="1_6vs1d"]
+[ext_resource type="AudioStream" uid="uid://0lhlv54nynon" path="res://audio/sfx/pop-02.wav" id="2_0uy6e"]
+[ext_resource type="AudioStream" uid="uid://bxdr6n2vx3jtt" path="res://audio/sfx/pop-03.wav" id="3_bsytd"]
+[ext_resource type="AudioStream" uid="uid://cergnqvelguv3" path="res://audio/sfx/pop-04.wav" id="4_k1gbv"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gt3t3"]
+streams_count = 4
+stream_0/stream = ExtResource("1_6vs1d")
+stream_1/stream = ExtResource("2_0uy6e")
+stream_2/stream = ExtResource("3_bsytd")
+stream_3/stream = ExtResource("4_k1gbv")
+
+[node name="SFXButtonPress" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamRandomizer_gt3t3")
+bus = &"SFX"

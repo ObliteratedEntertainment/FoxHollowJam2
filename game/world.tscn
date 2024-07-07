@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://4dnkc4toup5t"]
+[gd_scene load_steps=8 format=3 uid="uid://4dnkc4toup5t"]
 
 [ext_resource type="Script" path="res://game/world.gd" id="1_gl2bu"]
 [ext_resource type="Script" path="res://game/world_generation.gd" id="1_vxb1g"]
+[ext_resource type="PackedScene" uid="uid://bxcjj5xjbl0n6" path="res://objects/npc.tscn" id="3_6eog7"]
 [ext_resource type="Script" path="res://game/camera_mover.gd" id="3_6hpug"]
+[ext_resource type="Script" path="res://game/npc_manager.gd" id="3_6pd04"]
+[ext_resource type="Texture2D" uid="uid://b7fi2p8wcidta" path="res://sprites/ui/effect_location.png" id="5_78tx4"]
 
 [sub_resource type="TileSet" id="TileSet_balls"]
 
@@ -23,9 +26,43 @@ color = Color(0, 0.669663, 0.67014, 1)
 [node name="TerrainLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_balls")
 
+[node name="NpcManager" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("3_6pd04")
+
+[node name="Npc" parent="NpcManager" instance=ExtResource("3_6eog7")]
+position = Vector2(55, 89)
+
+[node name="Npc2" parent="NpcManager" instance=ExtResource("3_6eog7")]
+position = Vector2(33, 69)
+
+[node name="Npc3" parent="NpcManager" instance=ExtResource("3_6eog7")]
+position = Vector2(67, 61)
+
+[node name="Npc4" parent="NpcManager" instance=ExtResource("3_6eog7")]
+position = Vector2(88, 86)
+is_female = true
+
+[node name="Npc5" parent="NpcManager" instance=ExtResource("3_6eog7")]
+position = Vector2(131, 70)
+is_female = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_6hpug")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
+
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = -4
+offset_right = 158.0
+offset_bottom = 115.0
+color = Color(0.290196, 0.360784, 0.129412, 1)
+
+[node name="FoliageManager" type="Node2D" parent="."]
+
+[node name="EffectLocation" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(53, 45)
+texture = ExtResource("5_78tx4")
